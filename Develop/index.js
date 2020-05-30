@@ -1,7 +1,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
-// const generationPage = require('generateMarkdown.js')
+const generationPage = require('./generateMarkdown.js')
 // const appendFileAsync = util.promisify(fs.appendFile);
 // const readFileAsync = util.promisify(fs.readFile);
 
@@ -10,7 +10,7 @@ const questions = [
     {
         type: "input",
         message: "What is the name of your repo?:",
-        name: "Repo Name"
+        name: "RepoName"
       },
       {
         type: "input",
@@ -25,30 +25,35 @@ const questions = [
 
 ];
 
-function writeToFile(data) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('README.md',data,err =>{
-            if (err){
-                reject(err);
-                return;
-            }
-            resolve({
-                ok:true,
-                message: "New file created"
+// function writeToFile(data) {
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile('README.md',data,err =>{
+//             if (err){
+//                 reject(err);
+//                 return;
+//             }
+//             resolve({
+//                 ok:true,
+//                 message: "New file created"
 
-             });
+//              });
 
-            });
+//             });
+//         });
+// }
+
+// function init() {
+ inquirer.prompt(questions).then(data =>{
+        fs.appendFileSync("README.md",(+ data.repoName) +'\n', function(err){
+            if (err)
+            return console.log(err)
         });
-}
+    })
+// };
 
-function init() {
-    return inquirer.prompt(questions)
-};
-
-init()
-// .then(initData =>{
-//     return generationPage (initData);
+// init()
+// .then(data =>{
+//     return generationPage (data);
 // })
 .then(pageMarkdown =>{
 return writeToFile(pageMarkdown);
