@@ -1,8 +1,9 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
-const appendFileAsync = util.promisify(fs.appendFile);
-const readFileAsync = util.promisify(fs.readFile);
+// const generationPage = require('generateMarkdown.js')
+// const appendFileAsync = util.promisify(fs.appendFile);
+// const readFileAsync = util.promisify(fs.readFile);
 
 
 const questions = [
@@ -19,14 +20,14 @@ const questions = [
       {
         type: "input",
         message:"Write a discription of this repo:",
-        name: "confirm"
+        name: "description"
       }
 
 ];
 
 function writeToFile(data) {
     return new Promise((resolve, reject) => {
-        fs.writeFile('./Develop/README.md',data,err =>{
+        fs.writeFile('README.md',data,err =>{
             if (err){
                 reject(err);
                 return;
@@ -41,6 +42,15 @@ function writeToFile(data) {
         });
 }
 
-function init(){
+function init() {
     return inquirer.prompt(questions)
-}
+};
+
+init()
+// .then(initData =>{
+//     return generationPage (initData);
+// })
+.then(pageMarkdown =>{
+return writeToFile(pageMarkdown);
+
+});
