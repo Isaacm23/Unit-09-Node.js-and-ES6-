@@ -2,8 +2,6 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const util = require("util");
 const generationPage = require("./generateMarkdown.js");
-// const appendFileAsync = util.promisify(fs.appendFile);
-// const readFileAsync = util.promisify(fs.readFile);
 
 const questions = [
   {
@@ -23,7 +21,7 @@ const questions = [
   },
   {
     type: "input",
-    message: "Any badges you would like to add?",
+    message: "Add badges using ![]() format",
     name: "badges",
   },
   {
@@ -76,36 +74,36 @@ inquirer.prompt(questions).then((data) => {
   });
 
   fs.appendFileSync(
-    "README.md","# GITHUB USERNAME " +"\n" + data.username + "\n",
+    "README.md","## GITHUB USERNAME: " + data.username + "\n",
     function (err) {
       if (err) return console.log(err);
     });
-  fs.appendFileSync("README.md", "# DESCRIPTION" +"\n" + data.description + "\n",
+  fs.appendFileSync("README.md", "## DESCRIPTION" +"\n" + data.description + "\n",
     function (err) {
       if (err) return console.log(err);
     });
 
-  fs.appendFileSync("README.md", "# BADGES "+"\n" + data.badges + "\n", function (
+  fs.appendFileSync("README.md", "## BADGES "+"\n" + data.badges + "\n", function (
     err
   ) {
     if (err) return console.log(err);
   });
-  fs.appendFileSync("README.md", "# VISUALS " +"\n" + + data.visuals + "\n", function (
+  fs.appendFileSync("README.md", "## VISUALS " +"\n"  + data.visuals + "\n", function (
     err
   ) {
     if (err) return console.log(err);
   });
-fs.appendFileSync("README.md", "# INSTALLATION " +"\n" + data.installation + "\n", function (
+fs.appendFileSync("README.md", "## INSTALLATION " +"\n" + data.installation + "\n", function (
   err
 ) {
   if (err) return console.log(err);
 });
-fs.appendFileSync("README.md", "# USAGE " +"\n" + data.usage + "\n", function (
+fs.appendFileSync("README.md", "## USAGE " +"\n" + data.usage + "\n", function (
   err
 ) {
   if (err) return console.log(err);
 });
-fs.appendFileSync("README.md", "# SUPPORT " +"\n" + data.support + "\n", function (
+fs.appendFileSync("README.md", "## SUPPORT " +"\n" + data.support + "\n", function (
   err
 ) {
   if (err) return console.log(err);
@@ -115,17 +113,17 @@ fs.appendFileSync("README.md", "# ROADMAP " +"\n" + data.roadmap + "\n", functio
 ) {
   if (err) return console.log(err);
 });
-fs.appendFileSync("README.md", "# AUTHORS AND ACKNOWLEDGMENT " +"\n" + data.authors + "\n", function (
+fs.appendFileSync("README.md", "## AUTHORS AND ACKNOWLEDGMENT " +"\n" + data.authors + "\n", function (
   err
 ) {
   if (err) return console.log(err);
 });
-fs.appendFileSync("README.md", "# LICENSE " +"\n" + data.license + "\n", function (
+fs.appendFileSync("README.md", "## LICENSE " +"\n" + data.license + "\n", function (
   err
 ) {
   if (err) return console.log(err);
 });
-fs.appendFileSync("README.md", "# PROJECT STATUS " +"\n" + data.status + "\n", function (
+fs.appendFileSync("README.md", "## PROJECT STATUS " +"\n" + data.status + "\n", function (
   err
 ) {
   if (err) return console.log(err);
@@ -133,10 +131,3 @@ fs.appendFileSync("README.md", "# PROJECT STATUS " +"\n" + data.status + "\n", f
 
 });
 
-// .then(data =>{
-//     return generationPage (data);
-// })
-// generateMarkDown =>{
-// return create(generateMarkdown);
-
-// };
