@@ -19,7 +19,7 @@ When creating an open source project on GitHub, it is important to have a qualit
 ## BADGES 
 [![Generic badge](https://img.shields.io/badge/Awesome-Cool-blue.svg)](https://shields.io/)
 ## VISUALS 
-![gif](./images/finishedreadme.gif)
+![gif](./images/finalreadme.gif)
 ## INSTALLATION 
 A command-line application that dynamically generates a README.md from a user's input. The application will be invoked with the following command:
 ```sh
