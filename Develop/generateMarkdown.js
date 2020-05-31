@@ -1,9 +1,8 @@
 function generateMarkdown(data) {
-  return `
-# ${data.title}
-## ${data.name}
-
-`;
+  return
+   `${data.visuals}`;
 }
 
 module.exports = generateMarkdown;
+
+![](images/)
